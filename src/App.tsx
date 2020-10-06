@@ -42,8 +42,6 @@ function App() {
     setCurrentCat(catId);
   };
 
-  console.log(currentCat);
-
   const quizStart = async () => {
     setLoading(true);
     setGameOver(false);
@@ -62,7 +60,6 @@ function App() {
       );
       setQuestions(specQuestions);
     }
-    console.log(questions);
 
     setNumber(0);
     setUserAnswers([]);
@@ -109,8 +106,8 @@ function App() {
             </button>
           </div>
         ) : null}
-        {!gameOver ? <p className="score">Score: {score}</p> : null}
-        {loading ? <p className="loading">loading...</p> : null}
+        {!gameOver && <p className="score">Score: {score}</p>}
+        {loading && <p className="loading">loading...</p>}
         {!loading && !gameOver ? (
           <QuestionCard
             question={questions[number].question}
